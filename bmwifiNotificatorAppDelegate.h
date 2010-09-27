@@ -20,9 +20,6 @@
 	IBOutlet NSMenuItem *menuBattery;
 	IBOutlet NSMenuItem *menuNetwork;
 	IBOutlet NSMenuItem *menuAutoRefresh;
-	IBOutlet NSView *customView;
-	IBOutlet NSTextField *customLabel;
-	IBOutlet NSImageView *customImage;
 	NSTimer *t;
 	NSUserDefaults *pref;
 	BOOL isAutoRefreshing;

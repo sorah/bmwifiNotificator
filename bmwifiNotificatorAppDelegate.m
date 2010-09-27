@@ -31,7 +31,11 @@
 	[statusMenu update];
 	
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-	[statusItem setTitle:@"MF:--%/--"];
+	
+	[statusItem setImage:[[NSImage alloc] initWithContentsOfFile:
+						  [[NSBundle mainBundle] pathForResource:@"mf30notfound"
+														  ofType:@"png"]]];
+	[statusItem setTitle:@"Init"];
 	[statusItem setMenu:statusMenu];
 	[statusItem setHighlightMode:YES];
 	[self updateInformation:nil];
@@ -172,7 +176,6 @@
 }
 
 -(IBAction) updateInformation: (id)sender {
-	NSLog(@"hi %@",sender);
 	NSDictionary *status = [[self getInformation] retain];
 
 	[menuStatus setTitle:[NSString stringWithFormat:@"Status: %@",
@@ -188,7 +191,10 @@
 	
 	if([self isBwAvailable]) {
 		if([[status valueForKey:@"wanState"] isEqualToString:@"Failed to Login"]) {
-			[statusItem setTitle:@"MF:Err"];
+			[statusItem setTitle:@""];
+			[statusItem setImage:[[NSImage alloc] initWithContentsOfFile:
+								  [[NSBundle mainBundle] pathForResource:@"mf30err"
+																  ofType:@"png"]]];
 		}else{
 			[statusItem setTitle:[NSString stringWithFormat:@"%@%%",
 								  [status valueForKey:@"battery_status"],[status valueForKey:@"rssi"]]];
@@ -219,16 +225,14 @@
 						 [[NSBundle mainBundle] pathForResource:@"antenna5"
 														 ofType:@"png"]];
 			}
-			//[statusItem setTitle:@""];
-			//[customImage setImage:state];
-			//[customLabel setStringValue:[NSString stringWithFormat:@"%@%%",
-			//							 [status valueForKey:@"battery_status"]]];
-			//[statusItem setView:customView];
 			[statusItem setImage:state];
 			[state release];
 		}
 	}else{
-		[statusItem setTitle:@"MF:--"];
+		[statusItem setTitle:@""];
+		[statusItem setImage:[[NSImage alloc] initWithContentsOfFile:
+							  [[NSBundle mainBundle] pathForResource:@"mf30notfound"
+															  ofType:@"png"]]];
 		[self stopAutoRefresh];
 	}
 	[status autorelease];
@@ -241,9 +245,6 @@
 
 - (void) dealloc {
 	[pref release];
-	[customView release];
-	[customImage release];
-	[customLabel release];
 	[menuExit release];
 	[statusMenu release];
 	[statusItem release];
