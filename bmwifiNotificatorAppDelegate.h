@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "RegexKitLite.h"
 
-@interface bmwifiNotificatorAppDelegate : NSObject <NSApplicationDelegate> {
+@interface bmwifiNotificatorAppDelegate : NSObject {// <NSApplicationDelegate> {
     NSWindow *window;
 	NSStatusItem *statusItem;
 	IBOutlet NSMenu *statusMenu;
@@ -19,8 +19,10 @@
 	IBOutlet NSMenuItem *menuLevel;
 	IBOutlet NSMenuItem *menuBattery;
 	IBOutlet NSMenuItem *menuNetwork;
+	IBOutlet NSMenuItem *menuAutoRefresh;
 	NSTimer *t;
 	NSUserDefaults *pref;
+	BOOL isAutoRefreshing;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -31,4 +33,7 @@
 -(NSMutableDictionary*) getInformation;
 -(IBAction) updateInformation: (id)sender;
 -(IBAction) showPreferences: (id)sender;
+-(IBAction) toggleAutoRefresh: (id)sender;
+-(void) startAutoRefresh;
+-(void) stopAutoRefresh;
 @end

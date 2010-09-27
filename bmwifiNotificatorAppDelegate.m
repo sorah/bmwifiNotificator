@@ -35,7 +35,36 @@
 	[statusItem setMenu:statusMenu];
 	[statusItem setHighlightMode:YES];
 	[self updateInformation:nil];
-	
+	[self startAutoRefresh];
+}
+
+-(void) startAutoRefresh {
+	if(!t) {
+		t = [[NSTimer scheduledTimerWithTimeInterval:20
+											 target:self
+										   selector:@selector(updateInformation:)
+										   userInfo:nil
+											repeats:YES] retain];
+		[t fire];
+		isAutoRefreshing = YES;
+	}
+	[menuAutoRefresh setState:isAutoRefreshing];
+}
+-(void) stopAutoRefresh {
+	if(t) {
+		[t invalidate];
+		[t release];
+		t = nil;
+		isAutoRefreshing = NO;
+	}
+	[menuAutoRefresh setState:isAutoRefreshing];
+}
+-(IBAction) toggleAutoRefresh: (id)sender {
+	if(isAutoRefreshing) {
+		[self stopAutoRefresh];
+	} else {
+		[self startAutoRefresh];
+	}
 }
 
 - (BOOL) isBwAvailable {
@@ -93,7 +122,7 @@
 
 - (NSMutableDictionary*) getInformation {
 	NSMutableDictionary *hash = [[NSMutableDictionary dictionaryWithObjectsAndKeys:
-								 @"MF30 Not Found",@"wanState",@"N/A",@"network_type",
+								 @"MF30 Not Found - Auto Refreshing was stopped.",@"wanState",@"N/A",@"network_type",
 								 @"N/A",@"network_provider",@"N/A",@"battery_status",
 								 @"N/A",@"rssi",nil] retain];
 	if([self isBwAvailable]){
@@ -143,6 +172,7 @@
 }
 
 -(IBAction) updateInformation: (id)sender {
+	NSLog(@"hi %@",sender);
 	NSDictionary *status = [[self getInformation] retain];
 
 	[menuStatus setTitle:[NSString stringWithFormat:@"Status: %@",
@@ -151,7 +181,7 @@
 						    [status valueForKey:@"network_type"]]];
 	[menuCarrier setTitle:[NSString stringWithFormat:@"Carrier: %@",
 							[status valueForKey:@"network_provider"]]];
-	[menuBattery setTitle:[NSString stringWithFormat:@"Battery: %@",
+	[menuBattery setTitle:[NSString stringWithFormat:@"Battery: %@%%",
 							[status valueForKey:@"battery_status"]]];
 	[menuLevel setTitle:[NSString stringWithFormat:@"Signal Level: %@",
 							[status valueForKey:@"rssi"]]];
@@ -165,6 +195,7 @@
 		}
 	}else{
 		[statusItem setTitle:@"MF:--"];
+		[self stopAutoRefresh];
 	}
 	[status autorelease];
 }
@@ -185,6 +216,7 @@
 	[menuLevel release];
 	[menuBattery release];
 	[menuNetwork release];
+	[menuAutoRefresh release];
 	[super dealloc];
 }
 
