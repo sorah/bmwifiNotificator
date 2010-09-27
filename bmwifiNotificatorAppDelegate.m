@@ -183,15 +183,49 @@
 							[status valueForKey:@"network_provider"]]];
 	[menuBattery setTitle:[NSString stringWithFormat:@"Battery: %@%%",
 							[status valueForKey:@"battery_status"]]];
-	[menuLevel setTitle:[NSString stringWithFormat:@"Signal Level: %@",
+	[menuLevel setTitle:[NSString stringWithFormat:@"Noise: %@",
 							[status valueForKey:@"rssi"]]];
 	
 	if([self isBwAvailable]) {
 		if([[status valueForKey:@"wanState"] isEqualToString:@"Failed to Login"]) {
 			[statusItem setTitle:@"MF:Err"];
 		}else{
-			[statusItem setTitle:[NSString stringWithFormat:@"MF:%@%%/l%@",
+			[statusItem setTitle:[NSString stringWithFormat:@"%@%%",
 								  [status valueForKey:@"battery_status"],[status valueForKey:@"rssi"]]];
+			int rssi = [[status valueForKey:@"rssi"] intValue];
+			NSImage *state;
+			if ( rssi > 107 || rssi < 1 ) {
+				state = [[NSImage alloc] initWithContentsOfFile:
+						 [[NSBundle mainBundle] pathForResource:@"antenna0"
+														ofType:@"png"]];
+			} else if ( rssi <= 107 && rssi >  99 ) {
+				state = [[NSImage alloc] initWithContentsOfFile:
+						 [[NSBundle mainBundle] pathForResource:@"antenna1"
+														 ofType:@"png"]];
+			} else if ( rssi <= 99  && rssi >  93 ) {
+				state = [[NSImage alloc] initWithContentsOfFile:
+						 [[NSBundle mainBundle] pathForResource:@"antenna2"
+														 ofType:@"png"]];
+			} else if ( rssi <= 93  && rssi >  87 ) {
+				state = [[NSImage alloc] initWithContentsOfFile:
+						 [[NSBundle mainBundle] pathForResource:@"antenna3"
+														 ofType:@"png"]];
+			} else if ( rssi <= 87  && rssi >  81 ) {
+				state = [[NSImage alloc] initWithContentsOfFile:
+						 [[NSBundle mainBundle] pathForResource:@"antenna4"
+														 ofType:@"png"]];
+			} else if ( rssi <= 81  && rssi >= 1  ) {
+				state = [[NSImage alloc] initWithContentsOfFile:
+						 [[NSBundle mainBundle] pathForResource:@"antenna5"
+														 ofType:@"png"]];
+			}
+			//[statusItem setTitle:@""];
+			//[customImage setImage:state];
+			//[customLabel setStringValue:[NSString stringWithFormat:@"%@%%",
+			//							 [status valueForKey:@"battery_status"]]];
+			//[statusItem setView:customView];
+			[statusItem setImage:state];
+			[state release];
 		}
 	}else{
 		[statusItem setTitle:@"MF:--"];
@@ -207,6 +241,9 @@
 
 - (void) dealloc {
 	[pref release];
+	[customView release];
+	[customImage release];
+	[customLabel release];
 	[menuExit release];
 	[statusMenu release];
 	[statusItem release];

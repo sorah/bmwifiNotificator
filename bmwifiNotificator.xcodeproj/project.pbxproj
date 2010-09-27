@@ -12,6 +12,14 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		E7D0B8371250C3CD00A689AB /* antenna0.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B82F1250C3CD00A689AB /* antenna0.png */; };
+		E7D0B8381250C3CD00A689AB /* antenna1.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8301250C3CD00A689AB /* antenna1.png */; };
+		E7D0B8391250C3CD00A689AB /* antenna2.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8311250C3CD00A689AB /* antenna2.png */; };
+		E7D0B83A1250C3CD00A689AB /* antenna3.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8321250C3CD00A689AB /* antenna3.png */; };
+		E7D0B83B1250C3CD00A689AB /* antenna4.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8331250C3CD00A689AB /* antenna4.png */; };
+		E7D0B83C1250C3CD00A689AB /* antenna5.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8341250C3CD00A689AB /* antenna5.png */; };
+		E7D0B83D1250C3CD00A689AB /* mf30err.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8351250C3CD00A689AB /* mf30err.png */; };
+		E7D0B83E1250C3CD00A689AB /* mf30notfound.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D0B8361250C3CD00A689AB /* mf30notfound.png */; };
 		E7E5FD7E124F9DD500DEC65E /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5FD7D124F9DD500DEC65E /* RegexKitLite.m */; };
 		E7E5FDA4124FA84600DEC65E /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E5FDA3124FA84600DEC65E /* libicucore.dylib */; };
 /* End PBXBuildFile section */
@@ -29,6 +37,14 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* bmwifiNotificator-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "bmwifiNotificator-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* bmwifiNotificator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bmwifiNotificator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7D0B82F1250C3CD00A689AB /* antenna0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = antenna0.png; sourceTree = "<group>"; };
+		E7D0B8301250C3CD00A689AB /* antenna1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = antenna1.png; sourceTree = "<group>"; };
+		E7D0B8311250C3CD00A689AB /* antenna2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = antenna2.png; sourceTree = "<group>"; };
+		E7D0B8321250C3CD00A689AB /* antenna3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = antenna3.png; sourceTree = "<group>"; };
+		E7D0B8331250C3CD00A689AB /* antenna4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = antenna4.png; sourceTree = "<group>"; };
+		E7D0B8341250C3CD00A689AB /* antenna5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = antenna5.png; sourceTree = "<group>"; };
+		E7D0B8351250C3CD00A689AB /* mf30err.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mf30err.png; sourceTree = "<group>"; };
+		E7D0B8361250C3CD00A689AB /* mf30notfound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mf30notfound.png; sourceTree = "<group>"; };
 		E7E5FD7C124F9DD500DEC65E /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		E7E5FD7D124F9DD500DEC65E /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		E7E5FDA3124FA84600DEC65E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -106,6 +122,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7D0B82E1250C3CD00A689AB /* images */,
 				8D1107310486CEB800E47090 /* bmwifiNotificator-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -123,6 +140,21 @@
 				E7E5FDA3124FA84600DEC65E /* libicucore.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7D0B82E1250C3CD00A689AB /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E7D0B82F1250C3CD00A689AB /* antenna0.png */,
+				E7D0B8301250C3CD00A689AB /* antenna1.png */,
+				E7D0B8311250C3CD00A689AB /* antenna2.png */,
+				E7D0B8321250C3CD00A689AB /* antenna3.png */,
+				E7D0B8331250C3CD00A689AB /* antenna4.png */,
+				E7D0B8341250C3CD00A689AB /* antenna5.png */,
+				E7D0B8351250C3CD00A689AB /* mf30err.png */,
+				E7D0B8361250C3CD00A689AB /* mf30notfound.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +202,14 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				E7D0B8371250C3CD00A689AB /* antenna0.png in Resources */,
+				E7D0B8381250C3CD00A689AB /* antenna1.png in Resources */,
+				E7D0B8391250C3CD00A689AB /* antenna2.png in Resources */,
+				E7D0B83A1250C3CD00A689AB /* antenna3.png in Resources */,
+				E7D0B83B1250C3CD00A689AB /* antenna4.png in Resources */,
+				E7D0B83C1250C3CD00A689AB /* antenna5.png in Resources */,
+				E7D0B83D1250C3CD00A689AB /* mf30err.png in Resources */,
+				E7D0B83E1250C3CD00A689AB /* mf30notfound.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
