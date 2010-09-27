@@ -1,11 +1,26 @@
-//
-//  bmwifiNoficatorAppDelegate.m
-//  bmwifiNoficator
-//
-//  Created by Shota Fukumori on 9/26/2010.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
-
+/*
+ * bmwifiNoficatorAppDelegate.m
+ *
+ * The MIT Licence
+ *     (c) 2010-, Shota Fukumori (sora_h)
+ *     Permission is hereby granted, free of charge, to any person obtaining a copy
+ *     of this software and associated documentation files (the "Software"), to deal
+ *     in the Software without restriction, including without limitation the rights
+ *     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *     copies of the Software, and to permit persons to whom the Software is
+ *     furnished to do so, subject to the following conditions:
+ * 
+ *     The above copyright notice and this permission notice shall be included in
+ *     all copies or substantial portions of the Software.
+ * 
+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ *     THE SOFTWARE.
+ */
 #import "bmwifiNotificatorAppDelegate.h"
 
 @implementation bmwifiNotificatorAppDelegate
@@ -32,9 +47,12 @@
 	
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 	
-	[statusItem setImage:[[NSImage alloc] initWithContentsOfFile:
-						  [[NSBundle mainBundle] pathForResource:@"mf30notfound"
-														  ofType:@"png"]]];
+	NSImage *img = [[NSImage alloc] initWithContentsOfFile:
+					[[NSBundle mainBundle] pathForResource:@"mf30notfound"
+													ofType:@"png"]];
+	[statusItem setImage:img];
+	[img release];
+	
 	[statusItem setTitle:@"Init"];
 	[statusItem setMenu:statusMenu];
 	[statusItem setHighlightMode:YES];
@@ -116,10 +134,12 @@
 	if(err) {
 		NSLog(@"error = %@",err);
 	}else{
-		if([[[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding]
-			isMatchedByRegex:@"login.asp"]) {
+		NSString *str = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+		if([str isMatchedByRegex:@"login.asp"]) {
+			[str release];
 			return NO;
 		}
+		[str release];
 	}
 	return YES;
 }
@@ -131,6 +151,7 @@
 								 @"N/A",@"rssi",nil] retain];
 	if([self isBwAvailable]){
 		if(![self login]) {
+			[hash release];
 			return [NSMutableDictionary dictionaryWithObjectsAndKeys:
 					@"Failed to Login",@"wanState",@"N/A",@"network_type",
 					@"N/A",@"network_provider",@"N/A",@"battery_status",
@@ -186,15 +207,17 @@
 							[status valueForKey:@"network_provider"]]];
 	[menuBattery setTitle:[NSString stringWithFormat:@"Battery: %@%%",
 							[status valueForKey:@"battery_status"]]];
-	[menuLevel setTitle:[NSString stringWithFormat:@"Noise: %@",
+	[menuLevel setTitle:[NSString stringWithFormat:@"Signal Level: %@",
 							[status valueForKey:@"rssi"]]];
 	
 	if([self isBwAvailable]) {
 		if([[status valueForKey:@"wanState"] isEqualToString:@"Failed to Login"]) {
 			[statusItem setTitle:@""];
-			[statusItem setImage:[[NSImage alloc] initWithContentsOfFile:
-								  [[NSBundle mainBundle] pathForResource:@"mf30err"
-																  ofType:@"png"]]];
+			NSImage *image = [[NSImage alloc] initWithContentsOfFile:
+							  [[NSBundle mainBundle] pathForResource:@"mf30err"
+															  ofType:@"png"]];
+			[statusItem setImage:image];
+			[image release];
 		}else{
 			[statusItem setTitle:[NSString stringWithFormat:@"%@%%",
 								  [status valueForKey:@"battery_status"],[status valueForKey:@"rssi"]]];
@@ -203,7 +226,7 @@
 			if ( rssi > 107 || rssi < 1 ) {
 				state = [[NSImage alloc] initWithContentsOfFile:
 						 [[NSBundle mainBundle] pathForResource:@"antenna0"
-														ofType:@"png"]];
+														 ofType:@"png"]];
 			} else if ( rssi <= 107 && rssi >  99 ) {
 				state = [[NSImage alloc] initWithContentsOfFile:
 						 [[NSBundle mainBundle] pathForResource:@"antenna1"
@@ -230,9 +253,11 @@
 		}
 	}else{
 		[statusItem setTitle:@""];
-		[statusItem setImage:[[NSImage alloc] initWithContentsOfFile:
-							  [[NSBundle mainBundle] pathForResource:@"mf30notfound"
-															  ofType:@"png"]]];
+		NSImage *img = [[NSImage alloc] initWithContentsOfFile:
+						[[NSBundle mainBundle] pathForResource:@"mf30notfound"
+														ofType:@"png"]];
+		[statusItem setImage:img];
+		[img release];
 		[self stopAutoRefresh];
 	}
 	[status autorelease];
