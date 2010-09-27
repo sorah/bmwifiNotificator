@@ -31,7 +31,7 @@
 	[statusMenu update];
 	
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-	[statusItem setTitle:@"MF30Wait"];
+	[statusItem setTitle:@"MF:--%/--"];
 	[statusItem setMenu:statusMenu];
 	[statusItem setHighlightMode:YES];
 	[self updateInformation:nil];
@@ -46,6 +46,7 @@
 	req = [[NSMutableURLRequest alloc]
 		   initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/",
 											 [pref stringForKey:@"ip"]]]];
+	req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 	[req setHTTPMethod:@"HEAD"];
 	
 	[NSURLConnection sendSynchronousRequest:req
@@ -69,6 +70,7 @@
 	req = [[NSMutableURLRequest alloc] 
 		   initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/goform/login",
 											 [pref stringForKey:@"ip"]]]];
+	req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 	[req setHTTPMethod:@"POST"];
 	[req setHTTPBody:[[NSString stringWithFormat:@"user=%@&psw=%@",
 					   [pref stringForKey:@"user"],[pref stringForKey:@"pass"]]
@@ -110,6 +112,7 @@
 		req = [[NSMutableURLRequest alloc]
 			   initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/logo.asp",
 												 [pref stringForKey:@"ip"]]]];
+		req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
 		[req setHTTPMethod:@"GET"];
 		
 		result = [NSURLConnection sendSynchronousRequest:req returningResponse:&res error:&err];
@@ -155,13 +158,13 @@
 	
 	if([self isBwAvailable]) {
 		if([[status valueForKey:@"wanState"] isEqualToString:@"Failed to Login"]) {
-			[statusItem setTitle:@"ErrMF30"];
+			[statusItem setTitle:@"MF:Err"];
 		}else{
 			[statusItem setTitle:[NSString stringWithFormat:@"MF:%@%%/l%@",
 								  [status valueForKey:@"battery_status"],[status valueForKey:@"rssi"]]];
 		}
 	}else{
-		[statusItem setTitle:@"NoMF30"];
+		[statusItem setTitle:@"MF:--"];
 	}
 	[status autorelease];
 }
