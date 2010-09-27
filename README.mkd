@@ -1,0 +1,130 @@
+# bmwifiNotificator / Check status of b-mobile wifi (bm-mf30) for OSX
+
+## Description
+
+This software shows signal level and battery status of b-mobile wifi in menubar.
+
+## Requirements
+
+* Mac OS X 10.5+
+* B-mobile WiFi (BM-MF30)
+
+## Install
+
+Packages: <http://github.com/sorah/bmwifiNotificator/downloads>
+
+Source: <http://github.com/sorah/bmwifiNotificator>
+
+## How to use
+
+### Configure
+
+![login failed](http://gyazo.com/ca6982d4ced73471c564568180aa43ba.png)
+![preferences](http://gyazo.com/801219bce2f7975225f3acd77b30771b.png)
+
+
+1. Click icon
+2. Click Preferences
+3. Type IP Address of MF30, Username, Password
+4. Close Preferences
+
+### Reload
+
+1. Click icon
+2. Click Reload
+
+### Auto Reload
+
+__When are you configuring MF30, You need to turn off Auto Reload.__
+
+Auto Reloading is disabled when MF30 has missed.
+
+1. Click icon
+2. Click Auto Reload to toggle feature.
+
+### Icons
+
+#### Normal
+
+![normal](http://gyazo.com/028f2ef6f57d90c6c63c9bfc2d747fa0.png)
+
+#### Error (Almost Login failed)
+
+![login failed](http://gyazo.com/ca6982d4ced73471c564568180aa43ba.png)
+
+#### MF30 has missed
+
+![mf30 not found](http://gyazo.com/3c2c6a166d6bc0f00f7cd1010647db19.png)
+
+When mf30 has missed, Auto reloading will be disabled.
+
+
+## Legal Informations
+
+### B-mobile wifi
+
+Author doesn't have any relationship to Japan Communications, Inc.
+
+"b-mobile WiFi" is trademark of Japan Communications, Inc.
+
+### Including library
+
+#### RegexKitLite
+
+This software is using [RegexKitLite](http://regexkit.sourceforge.net/) by John Engelheart.
+
+    Copyright (c) 2008-2010, John Engelhart
+
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the Zang Industries nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+    TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+### License
+
+This license won't apply to `RegexKitLite.m`, `RegexKitLite.h`
+
+    MIT License
+
+    (c) Shota Fukumori (sora_h), 2010-
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
