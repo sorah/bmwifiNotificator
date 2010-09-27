@@ -46,8 +46,8 @@
 										   userInfo:nil
 											repeats:YES] retain];
 		[t fire];
-		isAutoRefreshing = YES;
 	}
+	isAutoRefreshing = YES;
 	[menuAutoRefresh setState:isAutoRefreshing];
 }
 -(void) stopAutoRefresh {
@@ -55,8 +55,8 @@
 		[t invalidate];
 		[t release];
 		t = nil;
-		isAutoRefreshing = NO;
 	}
+	isAutoRefreshing = NO;
 	[menuAutoRefresh setState:isAutoRefreshing];
 }
 -(IBAction) toggleAutoRefresh: (id)sender {
